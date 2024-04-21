@@ -22,7 +22,7 @@ const ProfileList = () => {
     <h1 className="text-3xl font-bold mb-4 text-center items-center">Users</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {users.map(user => (
-        <div key={user.id} className="bg-white p-4 rounded-lg shadow">
+        <div key={user.id} className="p-4 rounded-lg shadow-xl hover:scale-105">
           <Link to={`/profile/${user.id}`}>
             <Card user={user}/>
           </Link>

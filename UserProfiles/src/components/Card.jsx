@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ user}) => {
   return (
     <div>
-      <div className="relative h-[400px] w-[300px] rounded-md">
+      <div className="relative h-[380px] w-[280px]">
         <img
           src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
           alt="AirMax Pro"
@@ -16,9 +17,11 @@ const Card = ({ user}) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
             debitis?
           </p>
-          <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-            View Profile &rarr;
-          </button>
+          <Link>
+            <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
+              View Profile &rarr;
+            </button>
+          </Link>
         </div>
       </div>
     </div>
