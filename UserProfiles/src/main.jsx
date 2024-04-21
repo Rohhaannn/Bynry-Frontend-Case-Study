@@ -7,7 +7,7 @@ import Layout from './components/Layout.jsx'
 import Home from './components/Home.jsx'
 import ProfileList from './components/ProfileList.jsx'
 import ProfileDetails from './components/ProfileDetails.jsx'
-import NotFound from './components/NotFound.jsx'
+// import NotFound from './components/NotFound.jsx'
 import Admin from './components/Admin.jsx'
 
 const router = createBrowserRouter(
@@ -17,7 +17,7 @@ const router = createBrowserRouter(
       <Route path='/profilelist' element={<ProfileList/>}/>
       <Route path='/profile/:id' element={<ProfileDetails/>}/>
       <Route path='/admin' element={<Admin/>}/>
-      <Route element={<NotFound/>} />
+      
     </Route>
   )
 )
