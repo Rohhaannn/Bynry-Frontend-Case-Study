@@ -17,7 +17,9 @@ const Card = ({ user}) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
             debitis?
           </p>
-          <Link>
+          <Link
+            to={`/profile/${user.id}`}
+          >
             <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
               View Profile &rarr;
             </button>
