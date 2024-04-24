@@ -9,7 +9,7 @@ const Home = () => {
             <h1 className="text-4xl">
               {" "}
               Hello Welcome{" "}
-              <span className="text-pink-500">
+              <span className="text-[#3977d2]">
                 {" "}
                 Employement Registration{" "}
               </span>{" "}
@@ -28,7 +28,7 @@ const Home = () => {
               placeholder="Email"
             ></input>
           </div>
-          <button className="mt-6 px-3 py-2 rounded-lg bg-pink-500 hover:text-white">
+          <button className="mt-6 px-3 py-2 rounded-lg bg-[#3977d2] hover:text-white">
             Send
           </button>
         </div>
