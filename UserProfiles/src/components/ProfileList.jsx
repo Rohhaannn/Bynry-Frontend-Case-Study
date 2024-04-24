@@ -36,13 +36,13 @@ const ProfileList = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {users.map(user => (
               <div key={user.id} className="p-4 rounded-lg shadow-xl hover:scale-105">
-                {/* Pass the openProfileModal function directly */}
+                
                 <Card user={user} onOpenProfile={openProfileModal} />
               </div>
             ))}
           </div>
           
-          {/* Render the modal if showProfileModal is true */}
+          
           {showProfileModal && <ProfileModal user={selectedUser} onClose={closeProfileModal} />}
         </div>
       </div>

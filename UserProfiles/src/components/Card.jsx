@@ -20,7 +20,7 @@ const Card = ({ user, onOpenProfile }) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
             debitis?
           </p>
-          {/* Removed Link component */}
+          
           <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white" onClick={openProfile}>
             View Profile &rarr;
           </button>
