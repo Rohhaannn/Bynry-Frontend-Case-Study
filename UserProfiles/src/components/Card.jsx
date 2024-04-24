@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const Card = ({ user}) => {
+const Card = ({ user, onOpenProfile }) => {
+  const openProfile = () => {
+    onOpenProfile(user);
+  };
+
   return (
     <div>
       <div className="relative h-[380px] w-[280px]">
@@ -17,13 +20,10 @@ const Card = ({ user}) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
             debitis?
           </p>
-          <Link
-            to={`/profile/${user.id}`}
-          >
-            <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white">
-              View Profile &rarr;
-            </button>
-          </Link>
+          {/* Removed Link component */}
+          <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white" onClick={openProfile}>
+            View Profile &rarr;
+          </button>
         </div>
       </div>
     </div>
