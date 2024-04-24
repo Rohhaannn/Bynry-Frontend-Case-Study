@@ -38,8 +38,9 @@ const Home = () => {
           <div className="order-1 w-full md:w-1/2 px-10 mt-12 md:mt-24">
             <img
               src="https://assets.website-files.com/6174a877844b8d384f2230b9/621405faf156b68381c89877_Untitled%20design.gif"
-              className="w-75 h-115 mb-10"
+              className="w-75 h-115 mb-10 ml-10"
               alt="Banner Image"
+              width={500}
             />
           </div>
         </div>
