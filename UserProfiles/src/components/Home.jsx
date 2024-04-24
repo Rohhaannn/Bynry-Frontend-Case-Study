@@ -7,7 +7,7 @@ const Home = () => {
 
         <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row mb-20 bg-[#ebeeee]">
           <div className="w-full md:w-1/2 mt-12 md:mt-24 order-2 md:order-1">
-            <div className="space-y-12">
+            <div className="space-y-12 mt-10">
               <h1 className="text-4xl">
                 {" "}
                 Hello Welcome{" "}
@@ -38,7 +38,7 @@ const Home = () => {
           <div className="order-1 w-full md:w-1/2 px-10 mt-12 md:mt-24">
             <img
               src="https://assets.website-files.com/6174a877844b8d384f2230b9/621405faf156b68381c89877_Untitled%20design.gif"
-              className="w-75 h-115"
+              className="w-75 h-115 mb-10"
               alt="Banner Image"
             />
           </div>
