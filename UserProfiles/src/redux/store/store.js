@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware } from 'react-redux';
-import thunk from 'react-redux';
-import rootReducer from '../reducers/userReducer';
+import { createStore, applyMiddleware } from 'redux'; 
+import { thunk } from 'redux-thunk'; 
+import rootReducer from '../reducers/userReducer'; 
 
 const initialState = {
   users: {
