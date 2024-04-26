@@ -24,7 +24,23 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
-    // Other cases for adding, editing, and deleting users can remain the same
+    case 'ADD_USER':
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+      };
+    case 'EDIT_USER':
+      return {
+        ...state,
+        users: state.users.map((user) =>
+          user.id === action.payload.id ? { ...user, ...action.payload.updatedUser } : user
+        ),
+      };
+    case 'DELETE_USER':
+      return {
+        ...state,
+        users: state.users.filter((user) => user.id !== action.payload),
+      };
     default:
       return state;
   }

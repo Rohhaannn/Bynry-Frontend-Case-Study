@@ -9,6 +9,7 @@ import ProfileList from './components/ProfileList.jsx'
 import Admin from './components/Admin.jsx'
 import SearchUser from './components/SearchUser.jsx'
 import Contact from './components/Contact.jsx'
+import store from './redux/store/store.js'
 
 
 const router = createBrowserRouter(
@@ -25,7 +26,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+      <RouterProvider router={router}/>
+    </Provider>
   </React.StrictMode>,
 )

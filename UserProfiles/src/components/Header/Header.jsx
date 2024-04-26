@@ -13,10 +13,10 @@ const Header = () => {
           </Link>
           <div className="flex items-center lg:order-2">
             <Link
-              to="#"
+              to="/admin"
               className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
             >
-              Log in
+              Admin
             </Link>
             <Link
               to="#"
@@ -115,6 +115,27 @@ const Header = () => {
                   Contact
                 </NavLink>
               </li>
+
+              {/* =================== Admin =================== */}
+              {/* <li>
+                <NavLink
+                  to= "/admin"
+                  className={({isActive}) =>
+                      `block py-2 pr-4 
+                      pl-3 duration-200
+                      ${isActive ? "text-[#3977d2]" : "text-gray-700"}
+                      border-b 
+                      border-gray-100 
+                      hover:bg-gray-50 
+                      lg:hover:bg-transparent 
+                      lg:border-0 
+                      hover:text-[#3977d2] 
+                      lg:p-0`
+                  }
+                >
+                  Admin
+                </NavLink>
+              </li> */}
 
               
               

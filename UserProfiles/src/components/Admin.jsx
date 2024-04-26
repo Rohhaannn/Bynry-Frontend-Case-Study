@@ -1,11 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers, addUser, editUser, deleteUser } from '../features/userActions';
+import {
+  fetchUsers,
+  addUser as addUserAction,
+  editUser as editUserAction,
+  deleteUser as deleteUserAction,
+} from '../redux/reducers/userActions';
 
-const Admin = ({ users, loading, error, fetchUsers }) => {
+const Admin = ({
+  users,
+  loading,
+  error,
+  fetchUsers,
+  addUser,
+  editUser,
+  deleteUser,
+}) => {
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
+
+  const [newUser, setNewUser] = useState({ name: '', username: '', email: '' });
+  const [editMode, setEditMode] = useState(false);
+  const [editedUser, setEditedUser] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +38,7 @@ const Admin = ({ users, loading, error, fetchUsers }) => {
   };
 
   const handleEditUser = () => {
-    editUser(editedUser);
+    editUser(editedUser.id, editedUser);
     setEditMode(false);
     setEditedUser({});
   };
@@ -89,15 +106,21 @@ const Admin = ({ users, loading, error, fetchUsers }) => {
       </div>
       <div>
         <h2>Users</h2>
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>
-              {user.name} - {user.username} - {user.email}
-              <button onClick={() => setEditMode(true)}>Edit</button>
-              <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <ul>
+            {users.map((user) => (
+              <li key={user.id}>
+                {user.name} - {user.username} - {user.email}
+                <button onClick={() => setEditMode(true)}>Edit</button>
+                <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
@@ -111,9 +134,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchUsers,
-  addUser,
-  editUser,
-  deleteUser,
+  addUser: addUserAction,
+  editUser: editUserAction,
+  deleteUser: deleteUserAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);
