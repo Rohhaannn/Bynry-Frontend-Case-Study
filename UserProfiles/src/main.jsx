@@ -9,6 +9,7 @@ import ProfileList from './components/ProfileList.jsx'
 import Admin from './components/Admin.jsx'
 import SearchUser from './components/SearchUser.jsx'
 import Contact from './components/Contact.jsx'
+import { Provider } from 'react-redux'
 import store from './redux/store/store.js'
 
 

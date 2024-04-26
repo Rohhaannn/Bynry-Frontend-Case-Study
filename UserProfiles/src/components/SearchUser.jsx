@@ -45,7 +45,7 @@ const UserSearch = () => {
               placeholder="Search by username or name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-2 rounded-md font-medium text-2xl"
+              className="w-full px-2 rounded-md font-medium text-xl"
             />
             <button 
               onClick={handleSearch}

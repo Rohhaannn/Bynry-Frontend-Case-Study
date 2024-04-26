@@ -48,81 +48,92 @@ const Admin = ({
   };
 
   return (
-    <div>
-      <h1>Admin Panel</h1>
-      <div>
-        <h2>Add New User</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={newUser.name}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={newUser.username}
-          onChange={handleInputChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={newUser.email}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleAddUser}>Add User</button>
-      </div>
-      <div>
-        <h2>{editMode ? 'Edit User' : 'Add New User'}</h2>
-        {editMode && (
-          <>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={editedUser.name}
-              onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-            />
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={editedUser.username}
-              onChange={(e) => setEditedUser({ ...editedUser, username: e.target.value })}
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={editedUser.email}
-              onChange={(e) => setEditedUser({ ...editedUser, email: e.target.value })}
-            />
-            <button onClick={handleEditUser}>Save Changes</button>
-          </>
-        )}
-      </div>
-      <div>
-        <h2>Users</h2>
-        {loading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p>Error: {error}</p>
-        ) : (
-          <ul>
-            {users.map((user) => (
-              <li key={user.id}>
-                {user.name} - {user.username} - {user.email}
-                <button onClick={() => setEditMode(true)}>Edit</button>
-                <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-              </li>
-            ))}
-          </ul>
-        )}
+  <>
+    <div className='w-screen bg-[#ebeeee]'>
+      <div className='max-w-screen-xl container mx-auto py-8'>
+        <div className="container mx-auto px-4 py-8">
+          <h1 className="py-4 mb-10 text-4xl font-bold text-center text-[#001b5e]">Admin Panel</h1>
+          <div className="mb-8">
+            <h2 className="text-xl font-semibold mb-2">Add New User</h2>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={newUser.name}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={newUser.username}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={newUser.email}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <button
+                onClick={handleAddUser}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md px-4 py-2 w-full sm:w-auto"
+              >
+                Add User
+              </button>
+            </div>
+          </div>
+          <div className="mb-8">
+            <h2 className="text-xl font-semibold mb-2">{editMode ? 'Edit User' : 'Add New User'}</h2>
+            {editMode && (
+              <div className="flex flex-col sm:flex-row gap-4">
+                {/* Edit user form */}
+              </div>
+            )}
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Users</h2>
+            {loading ? (
+              <p className="text-gray-600">Loading...</p>
+            ) : error ? (
+              <p className="text-red-500">Error: {error}</p>
+            ) : users && users.length > 0 ? (
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {users.map((user) => (
+                  <li key={user.id} className="bg-white shadow-md rounded-lg p-4">
+                    <p className="font-semibold">{user.name}</p>
+                    <p className="text-gray-600">{user.username}</p>
+                    <p className="text-gray-600">{user.email}</p>
+                    <div className="flex mt-2">
+                      <button
+                        onClick={() => setEditMode(true)}
+                        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md px-4 py-2 mr-2"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteUser(user.id)}
+                        className="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No users found</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
+  </>  
   );
 };
 
