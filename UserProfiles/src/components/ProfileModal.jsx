@@ -18,11 +18,11 @@ const ProfileModal = ({ user, onClose }) => {
         <p className="text-gray-600"><strong>Company:</strong> {user.company?.name}</p>
         <p className="text-gray-600"><strong>Address:</strong> {user.address?.street}, {user.address?.suite}, {user.address?.city}, {user.address?.zipcode}</p>
         <div className="flex justify-between mt-4">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={onClose}>
-            Close
-          </button>
           <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={handleViewOnMap}>
             View address on Map
+          </button>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={onClose}>
+            Close
           </button>
         </div>
       </div>
