@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo";
 
 const menuItems = [
@@ -33,6 +33,10 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="relative w-full bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
@@ -46,33 +50,38 @@ const Header = () => {
           <ul className="inline-flex space-x-8">
             {menuItems.map((item) => (
               <li key={item.name}>
-                <Link
+                <NavLink
+                  exact
                   to={item.href}
+                  activeClassName="text-[#3977d2]"
                   className={({ isActive }) =>
                     `block py-2 pr-4 
                       pl-3 duration-200
+                      font-semibold
                       ${isActive ? "text-[#3977d2]" : "text-gray-700"}
+                      border-b 
                       border-gray-100 
                       hover:bg-gray-50 
                       lg:hover:bg-transparent 
                       lg:border-0 
-                      hover:text-[#3977d2]
+                      hover:text-[#3977d2] 
                       lg:p-0`
                   }
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
         </div>
         <div className="hidden lg:block">
-          <button
-            type="button"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          <NavLink
+            to="#"
+            activeClassName="text-[#3977d2]"
+            className="text-white bg-[#3977d2] hover:bg-blue-600 hover:text-black focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none mt-10"
           >
-            Login
-          </button>
+            Get started
+          </NavLink>
         </div>
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
@@ -105,33 +114,25 @@ const Header = () => {
                         key={item.name}
                         to={item.href}
                         className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
+                        onClick={closeMenu}
                       >
-                        <span className="ml-3 text-base font-medium text-gray-900">
+                        <span className="ml-3 text-base font-semibold text-gray-900">
                           {item.name}
                         </span>
                       </Link>
                     ))}
                   </nav>
                 </div>
-                {/* <button
-                  type="button"
-                  className="mt-4 w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
-                  Login
-                </button> */}
                 <div className="flex items-center lg:order-2">
-                  <Link
-                    to="/admin"
-                    className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-                  >
-                    Admin
-                  </Link>
-                  <Link
+                  <NavLink
+                    exact
                     to="#"
-                    className="text-white bg-[#3977d2] hover:bg-blue-600 hover:text-black focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                    activeClassName="text-[#3977d2]"
+                    className="text-white bg-[#3977d2] hover:bg-blue-600 hover:text-black focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none mt-10"
+                    onClick={closeMenu}
                   >
                     Get started
-                  </Link>
+                  </NavLink>
                 </div>
               </div>
             </div>
