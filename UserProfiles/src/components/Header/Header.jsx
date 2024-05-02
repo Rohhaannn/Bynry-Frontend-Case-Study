@@ -13,10 +13,6 @@ const menuItems = [
     href: "/profilelist",
   },
   {
-    name: "Search User",
-    href: "/searchuser",
-  },
-  {
     name: "Contact",
     href: "/contact",
   },

@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  fetchUsers,
-  addUser as addUserAction,
-  editUser as editUserAction,
-  deleteUser as deleteUserAction,
-} from '../redux/reducers/userActions';
+import { fetchUsers, addUser as addUserAction, editUser as editUserAction, deleteUser as deleteUserAction } from '../redux/reducers/userActions';
+import SearchUser from './SearchUser';
 
-const Admin = ({
-  users,
-  loading,
-  error,
-  fetchUsers,
-  addUser,
-  editUser,
-  deleteUser,
-}) => {
+const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUser }) => {
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
@@ -48,11 +36,11 @@ const Admin = ({
   };
 
   return (
-  <>
-    <div className='w-screen bg-[#ebeeee]'>
-      <div className='max-w-screen-xl container mx-auto py-8'>
-        <div className="container mx-auto px-4 py-8">
-          <h1 className="py-4 mb-10 text-4xl font-bold text-center text-[#001b5e]">Admin Panel</h1>
+    <>
+      <SearchUser/>
+      <div className="bg-gray-100 min-h-screen py-8">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h1 className="text-4xl font-bold text-center text-blue-900 mb-8">Admin Panel</h1>
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Add New User</h2>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -132,8 +120,7 @@ const Admin = ({
           </div>
         </div>
       </div>
-    </div>
-  </>  
+    </>
   );
 };
 

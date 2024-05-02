@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const UserSearch = () => {
+const SearchUser = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -29,6 +29,16 @@ const UserSearch = () => {
       setSearchError('Error fetching data. Please try again.');
     }
     setLoading(false);
+  };
+
+  const handleEditUser = (userId) => {
+    alert(`Editing user with ID: ${userId}`);
+    // Implement your edit logic here
+  };
+
+  const handleDeleteUser = (userId) => {
+    alert(`Deleting user with ID: ${userId}`);
+    // Implement your delete logic here
   };
 
   return (
@@ -62,32 +72,39 @@ const UserSearch = () => {
         ) : (
           <ul>
             {searchResults.map((user) => (
-
-              <div className='justify-start text-center mb-5'>
-
+              <div className='justify-start text-center mb-5' key={user.id}>
                 <p className='font-bold'>Result</p>
-
-                <li key={user.id}>
+                <li>
                   <div className='px-3 py-3'> 
                     <strong>Name:</strong> {user.name}
                   </div>
-
                   <div className='px-3 py-3'>
                     <strong>Username:</strong> {user.username}
                   </div>
-                
                   <div className='px-3 py-3'>
                     <strong>Email:</strong> {user.email}
                   </div>
-                  
                   <div className='px-3 py-3'>
                     <strong>Phone:</strong> {user.phone}
                   </div>
-
                   <div className='px-3 py-3'>
-                    <strong >Website:</strong> {user.website}
+                    <strong>Website:</strong> {user.website}
                   </div>
-                  <p>------------------------------------------------------</p>
+                  <div className='px-3 py-3 flex justify-center gap-3'>
+                    <button 
+                      onClick={() => handleEditUser(user.id)}
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md px-4 py-2"
+                    >
+                      Edit
+                    </button>
+                    <button 
+                      onClick={() => handleDeleteUser(user.id)}
+                      className="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                  
                 </li>
               </div>
             ))}
@@ -98,4 +115,4 @@ const UserSearch = () => {
   );
 };
 
-export default UserSearch;
+export default SearchUser;
