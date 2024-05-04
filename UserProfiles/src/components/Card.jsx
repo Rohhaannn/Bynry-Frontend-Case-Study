@@ -1,10 +1,12 @@
 import React from "react";
+import usersList from "../../public/usersList.json";
 
-const Card = ({ user, onOpenProfile, imgUrl }) => {
+const Card = ({ user, onOpenProfile }) => {
   const openProfile = () => {
     onOpenProfile(user);
   };
 
+  const imgUrl = usersList[user.id - 1]?.imgUrl || ''; // Accessing imgUrl directly from usersList based on user id
 
   return (
     <div>
@@ -21,7 +23,6 @@ const Card = ({ user, onOpenProfile, imgUrl }) => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
             debitis?
           </p>
-          
           <button className="mt-2 inline-flex cursor-pointer items-center text-sm font-semibold text-white" onClick={openProfile}>
             View Profile &rarr;
           </button>
