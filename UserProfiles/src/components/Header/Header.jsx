@@ -37,15 +37,17 @@ const Header = () => {
     <div className="relative w-full bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
-          <span>
-            <NavLink
-              to={item.href}
-              className="hover:cursor-pointer"
+
+          <span className="hover:cursor-pointer">
+            <Link
+              to='/'
+              className="inline-flex items-center space-x-2"
             >
-              <Logo/>
-              <span className="font-bold">Profiles</span>
-            </NavLink>
+              <Logo />
+              <p className=" text-xl font-bold">Profiles</p>
+            </Link>
           </span>
+          
         </div>
         <div className="hidden lg:block">
           <ul className="inline-flex space-x-8">
@@ -93,8 +95,14 @@ const Header = () => {
               <div className="px-5 pb-6 pt-5">
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
-                    <span>
-                      <Logo />
+                    <span className="hover:cursor-pointer">
+                      <Link
+                        to='/'
+                        className="inline-flex items-center space-x-2"
+                      >
+                        <Logo />
+                        <p className=" text-xl font-bold">Profiles</p>
+                      </Link>
                     </span>
                   </div>
                   <div className="-mr-2">
