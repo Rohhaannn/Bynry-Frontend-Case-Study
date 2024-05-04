@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import ProfileModal from './ProfileModal';
-// import usersList from '../../public/usersList.json'
+
 
 const ProfileList = () => {
   const [users, setUsers] = useState([]);
@@ -36,7 +36,7 @@ const ProfileList = () => {
         <div className="max-w-screen-xl container mx-auto py-8">
         <h1 className='py-4 mb-10 text-4xl font-bold text-center text-[#001b5e]'> All Users </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {users.map((user, index) => (
+            {users.map((user) => (
               <div key={user.id} className="p-4 rounded-lg shadow-xl hover:scale-105">
                 <Card user={user} onOpenProfile={openProfileModal} />
               </div>
