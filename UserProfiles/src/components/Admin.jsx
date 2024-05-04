@@ -40,7 +40,7 @@ const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUse
       <SearchUser/>
       <div className="bg-gray-100 min-h-screen py-8">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center text-blue-900 mb-8">Admin Panel</h1>
+          {/* <h1 className="text-4xl font-bold text-center text-blue-900 mb-8">Admin Panel</h1> */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Add New User</h2>
             <div className="flex flex-col sm:flex-row gap-4">

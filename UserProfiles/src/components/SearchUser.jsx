@@ -47,7 +47,7 @@ const SearchUser = () => {
         <div className="max-w-screen-xl container mx-auto py-8">
           <h1 className="py-4 mb-10 text-4xl font-bold text-center text-[#001b5e]">
             {" "}
-            Search User{" "}
+            Admin{" "}
           </h1>
           <div className="rounded-md py-5 items-center flex px-3 gap-3">
             <input
