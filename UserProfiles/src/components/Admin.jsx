@@ -66,7 +66,6 @@ const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUse
             <div className="flex flex-col gap-4">
               <input
                 type="text"
-                width={20}
                 name="name"
                 placeholder="Name"
                 value={newUser.name}
