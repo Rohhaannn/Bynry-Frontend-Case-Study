@@ -8,9 +8,21 @@ const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUse
     fetchUsers();
   }, [fetchUsers]);
 
-  const [newUser, setNewUser] = useState({ name: '', username: '', email: '' });
-  const [editMode, setEditMode] = useState(false);
-  const [editedUser, setEditedUser] = useState({});
+  const [newUser, setNewUser] = useState({
+    name: '',
+    username: '',
+    email: '',
+    address: {
+      street: '',
+      suite: '',
+      city: '',
+      zipcode: '',
+      geo: {
+        lat: '',
+        lng: ''
+      }
+    }
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,18 +33,27 @@ const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUse
   };
 
   const handleAddUser = () => {
-    addUser(newUser);
-    setNewUser({ name: '', username: '', email: '' });
+    const updatedUsers = [...users, newUser];
+    saveUsersToLocalStorage(updatedUsers);
+    setNewUser({
+      name: '',
+      username: '',
+      email: '',
+      address: {
+        street: '',
+        suite: '',
+        city: '',
+        zipcode: '',
+        geo: {
+          lat: '',
+          lng: ''
+        }
+      }
+    });
   };
 
-  const handleEditUser = () => {
-    editUser(editedUser.id, editedUser);
-    setEditMode(false);
-    setEditedUser({});
-  };
-
-  const handleDeleteUser = (userId) => {
-    deleteUser(userId);
+  const saveUsersToLocalStorage = (users) => {
+    localStorage.setItem('users', JSON.stringify(users));
   };
 
   return (
@@ -40,12 +61,12 @@ const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUse
       <SearchUser/>
       <div className="bg-gray-100 min-h-screen py-8">
         <div className="max-w-screen-xl mx-auto px-4">
-          {/* <h1 className="text-4xl font-bold text-center text-blue-900 mb-8">Admin Panel</h1> */}
           <div className="mb-8">
             <h2 className="text-xl font-semibold mb-2">Add New User</h2>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-4">
               <input
                 type="text"
+                width={20}
                 name="name"
                 placeholder="Name"
                 value={newUser.name}
@@ -68,6 +89,54 @@ const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUse
                 onChange={handleInputChange}
                 className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
               />
+              <input
+                type="text"
+                name="address.street"
+                placeholder="Street"
+                value={newUser.address.street}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <input
+                type="text"
+                name="address.suite"
+                placeholder="Suite"
+                value={newUser.address.suite}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <input
+                type="text"
+                name="address.city"
+                placeholder="City"
+                value={newUser.address.city}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <input
+                type="text"
+                name="address.zipcode"
+                placeholder="Zipcode"
+                value={newUser.address.zipcode}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <input
+                type="text"
+                name="address.geo.lat"
+                placeholder="Latitude"
+                value={newUser.address.geo.lat}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
+              <input
+                type="text"
+                name="address.geo.lng"
+                placeholder="Longitude"
+                value={newUser.address.geo.lng}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-md px-4 py-2 w-full sm:w-auto"
+              />
               <button
                 onClick={handleAddUser}
                 className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md px-4 py-2 w-full sm:w-auto"
@@ -75,48 +144,6 @@ const Admin = ({ users, loading, error, fetchUsers, addUser, editUser, deleteUse
                 Add User
               </button>
             </div>
-          </div>
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-2">{editMode ? 'Edit User' : 'Add New User'}</h2>
-            {editMode && (
-              <div className="flex flex-col sm:flex-row gap-4">
-                {/* Edit user form */}
-              </div>
-            )}
-          </div>
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Users</h2>
-            {loading ? (
-              <p className="text-gray-600">Loading...</p>
-            ) : error ? (
-              <p className="text-red-500">Error: {error}</p>
-            ) : users && users.length > 0 ? (
-              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {users.map((user) => (
-                  <li key={user.id} className="bg-white shadow-md rounded-lg p-4">
-                    <p className="font-semibold">{user.name}</p>
-                    <p className="text-gray-600">{user.username}</p>
-                    <p className="text-gray-600">{user.email}</p>
-                    <div className="flex mt-2">
-                      <button
-                        onClick={() => setEditMode(true)}
-                        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md px-4 py-2 mr-2"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDeleteUser(user.id)}
-                        className="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No users found</p>
-            )}
           </div>
         </div>
       </div>
